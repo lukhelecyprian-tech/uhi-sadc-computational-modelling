@@ -1,0 +1,40 @@
+# Satellite and GIS datasets
+*.tif
+*.tiff
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+
+# Archives and large data
+*.zip
+*.tar
+*.gz
+
+# Compiled Fortran outputs
+*.o
+*.mod
+*.smod
+*.exe
+
+# Python temporary files
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Backups and logs
+*.bak
+*.log
+*.tmp
+
+# Credentials
+.env
+.env.*
+*.pem
+*.key
+
+# Generated figures and results
+figures/
+results/
