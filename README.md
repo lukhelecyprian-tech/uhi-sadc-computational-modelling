@@ -30,8 +30,35 @@ Fortran compiler used: GNU Fortran 13.3.0.
 
 ## Reproducibility
 
-Some programs require external raster datasets and prepared numerical inputs. Large datasets and generated outputs are not included in this repository. Complete reproduction instructions and numerical verification results will be documented separately.
+This repository provides the Python and Fortran source
+codes developed for an ongoing MSc Computational Physics
+research project at the University of Eswatini.
 
+The computational workflow consists of:
+
+1. Processing Landsat-derived LST, NDVI, albedo and
+   surface reflectance data.
+2. Preparing spatial input fields using Python.
+3. Running numerical models and mitigation scenarios
+   using Fortran.
+4. Performing numerical verification and sensitivity
+   analyses.
+5. Generating scientific figures using Python.
+
+The source codes are organised into the `python/`
+and `fortran/` directories.
+
+Some programs require external satellite datasets,
+prepared input files and specific directory structures.
+Large raster datasets and generated simulation outputs
+are not distributed in this repository.
+
+The repository is a research-in-progress archive.
+Source codes, documentation and results may be updated
+following academic review.
+
+Full reproducibility instructions will be added as
+the research is finalised.
 ## Author
 
 Cyprian Lukhele
