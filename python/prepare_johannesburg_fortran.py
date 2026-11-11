@@ -2,11 +2,10 @@ import numpy as np
 import rasterio
 from pathlib import Path
 
-data_dir = Path("data")
-source_dir = Path(
-    "/mnt/c/Users/Cyprian Lukhele/Desktop/"
-    "MSc_UHI_Thesis/Johannesburg/Raster"
-)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+data_dir = PROJECT_ROOT / "data"
+source_dir = data_dir / "raw" / "johannesburg"
 
 names = {
     "temperature": "Johannesburg_LST.tif",

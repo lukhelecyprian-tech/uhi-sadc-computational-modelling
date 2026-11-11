@@ -3,21 +3,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 import rasterio
 
-figdir = Path("figures/baseline")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+figdir = PROJECT_ROOT / "figures" / "baseline"
 figdir.mkdir(parents=True, exist_ok=True)
 
 cities = ["mbabane", "manzini", "johannesburg"]
 datasets = []
 
 for city in cities:
-    raster_path = Path("data") / f"{city.capitalize()}_LST.tif"
-    model_path = Path("results") / f"{city}_mitigation_S0_K.txt"
+    raster_path = PROJECT_ROOT / "data" / f"{city.capitalize()}_LST.tif"
+    model_path = PROJECT_ROOT / "results" / f"{city}_mitigation_S0_K.txt"
 
     if city == "johannesburg":
-        raster_path = Path(
-            "/mnt/c/Users/Cyprian Lukhele/Desktop/"
-            "MSc_UHI_Thesis/Johannesburg/Raster/"
-            "Johannesburg_LST.tif"
+        raster_path = (
+            PROJECT_ROOT / "data" / "raw"
+            / "johannesburg" / "Johannesburg_LST.tif"
         )
 
     with rasterio.open(raster_path) as src:
@@ -30,7 +30,7 @@ for city in cities:
 
     if city == "johannesburg":
         with rasterio.open(
-            "data/Johannesburg_four_variable_mask.tif"
+            PROJECT_ROOT / "data" / "Johannesburg_four_variable_mask.tif"
         ) as mask_src:
             if mask_src.shape != shape:
                 raise ValueError("Johannesburg mask shape mismatch")
