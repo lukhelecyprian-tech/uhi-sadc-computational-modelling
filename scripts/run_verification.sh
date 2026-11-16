@@ -11,19 +11,28 @@ programs=(
     verify_coupled_spatial_operator
 )
 
-echo "Building verification programs..."
+echo "======================================"
+echo "UHI NUMERICAL VERIFICATION SYSTEM"
+echo "======================================"
+
+echo
+echo "Building Fortran programs..."
 
 if ! make -C "$repo_root" -j2; then
-    echo "ERROR: Fortran build failed."
+    echo "FAIL: Fortran compilation"
     exit 1
 fi
 
-mkdir -p "$workdir/results" "$workdir/figures" "$workdir/data"
+mkdir -p \
+    "$workdir/results" \
+    "$workdir/figures" \
+    "$workdir/data"
 
 passed=0
 failed=0
 
 for program in "${programs[@]}"; do
+
     echo
     echo "===== $program ====="
 
@@ -42,14 +51,46 @@ for program in "${programs[@]}"; do
         tail -n 20 "$workdir/${program}.log"
         failed=$((failed + 1))
     fi
+
 done
 
 echo
-echo "===== VERIFICATION SUMMARY ====="
+echo "======================================"
+echo "FORTRAN EXECUTION SUMMARY"
+echo "======================================"
+
 echo "Passed: $passed"
 echo "Failed: $failed"
-echo "Logs and results: $workdir"
 
 if [ "$failed" -ne 0 ]; then
+    echo "FAIL: One or more Fortran programs failed"
+    echo "Logs: $workdir"
     exit 1
 fi
+
+echo
+echo "======================================"
+echo "NUMERICAL REGRESSION VERIFICATION"
+echo "======================================"
+
+if ! python3 \
+    "$repo_root/scripts/check_numerical_results.py" \
+    "$workdir/results"; then
+
+    echo
+    echo "FAIL: Numerical regression verification"
+    echo "Results: $workdir/results"
+    exit 1
+fi
+
+echo
+echo "======================================"
+echo "FINAL VERIFICATION SUMMARY"
+echo "======================================"
+
+echo "Fortran execution: 4/4 passed"
+echo "Numerical regression: PASSED"
+echo "Overall status: PASS"
+echo "Logs and results: $workdir"
+
+exit 0
