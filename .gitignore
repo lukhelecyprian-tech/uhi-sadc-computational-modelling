@@ -42,3 +42,6 @@ results/
 # Historical experimental versions
 fortran/mbabane_mitigation_scenarios_before_albedo_fix.f90
 fortran/mbabane_physical_sensitivity_backup.f90
+
+# Generated build directory
+/build/
