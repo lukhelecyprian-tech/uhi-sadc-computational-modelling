@@ -64,3 +64,43 @@ the research is finalised.
 Cyprian Lukhele
 MSc Computational Physics
 University of Eswatini
+
+## Scientific Documentation
+
+The following documents describe the research methodology,
+numerical model and principal findings:
+
+- [Research Methodology](docs/research_methodology.md)
+- [Numerical Model](docs/numerical_model.md)
+- [Research Results Summary](docs/results_summary.md)
+- [Research Input Data](data/README.md)
+
+## Reference Mitigation Experiments
+
+The computational experiments include:
+
+| Scenario | Description |
+|---|---|
+| S0 | Baseline without additional mitigation |
+| S1 | Increased surface albedo |
+| S2 | Enhanced latent-heat cooling |
+| S3 | Combined albedo and latent-heat mitigation |
+
+For S1, S2 and S3, the reference intervention eligibility
+criterion is held fixed at **NDVI < 0.30**.
+
+The simulations represent idealised interventions and
+are not independently validated predictions of actual
+urban cooling.
+
+## Research Status
+
+This is an ongoing MSc Computational Physics research
+repository. Numerical verification and convergence
+experiments have been conducted, but independent physical
+validation remains outstanding.
+
+The repository contains research source code and
+documentation. Complete end-to-end reproducibility
+still requires additional input-data preparation
+instructions and execution tests.
